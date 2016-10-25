@@ -24,9 +24,7 @@ Route::group(['middleware'=>'auth'], function(){
         return view('welcome');
     });
 
-    Route::get('test', function (){
-        return view('test');
-    });
+    Route::get('post', 'PostController@index');
 
 
 
