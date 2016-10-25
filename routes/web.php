@@ -20,19 +20,22 @@
 
 Route::group(['middleware'=>'auth'], function(){
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
+//    Route::get('/', function () {
+//        return view('welcome');
+//    });
 
-    Route::get('post', 'PostController@index');
+
 
 
 
     Route::get('/home', 'HomeController@index');
 });
 
-
+Route::get('/', 'PostController@index');
 
 Auth::routes();
+
+
+
 
 

@@ -66,12 +66,21 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+
+
                 <div class="top-right links">
+
+
+                    @if (Auth::guest())
                     <a href="{{ url('/login') }}">Login</a>
                     <a href="{{ url('/register') }}">Register</a>
+                    @else
+                    {{ Auth::user()->name }}
+                    <a href="{{ url('/logout') }}">Logout</a>
+                    @endif
                 </div>
-            @endif
+
+
 
             @yield('content')
     </body>
