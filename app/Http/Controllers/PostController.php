@@ -7,13 +7,20 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App;
 
+
 class PostController extends Controller
 {
     public function index(){
         $posts = App\Post::all();
 
-        $test = 123;
-        return view('post', compact('posts'));
+
+        return view('index', compact('posts'));
     }
 
+    public function note($id){
+
+        $post = App\Post::find($id);
+
+        return view('notes.index',compact('post'));
+    }
 }

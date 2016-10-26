@@ -35,6 +35,14 @@ Route::get('/', 'PostController@index');
 
 Auth::routes();
 
+Route::get('/test', function () {
+    $user = Auth::user();
+    echo $user;
+});
+
+Route::get('/note/{id}', 'PostController@note');
+
+
 
 
 
