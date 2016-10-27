@@ -22,11 +22,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Post whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Post whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property integer $user_id
+ * @method static \Illuminate\Database\Query\Builder|\App\Post whereUserId($value)
  */
 class Post extends Model
 {
 
-
+    protected $fillable=['title','head','body','author'];
 
 
 

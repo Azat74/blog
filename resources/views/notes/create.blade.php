@@ -4,19 +4,30 @@
 
     <div class="container">
         <h1>Создать статью</h1>
+        @if(count($errors)>0)
 
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li class="alert alert-danger">{{$error}}</li>
+                @endforeach
+            </ul>
+
+
+        @endif
         <form action="/" method="POST">
             {{csrf_field()}}
 
 
             <div class="form-group">
-                <label for="name">Название</label>
+                <label for="title">Название</label>
                 <input class="form-control" name="title" type="text">
-                <label for="name">Превью статьи</label>
+                <label for="head">Превью статьи</label>
                 <input class="form-control" name="head" type="text">
-                <label for="name">Текст статьи</label>
+                <label for="body">Текст статьи</label>
                 <input class="form-control" name="body" type="text">
-                <input class="form-control" name="author" type="text">
+                <input type="hidden" name="author" value="{{Auth::user()->name}}">
+
+
 
 
             </div>
