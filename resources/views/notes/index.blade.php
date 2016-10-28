@@ -5,7 +5,7 @@
 
 
 
-{{$post->id}}<br><hr>
+{{$post->id}} <br><hr>
 {{ $post->title }}<br><hr>
 {{ $post->head }}<br><hr>
 {{ $post->body }}<br><hr>
@@ -14,6 +14,7 @@
 
 <div align="center"> {{ $post->created_at }}<br><hr>
                      {{ $post->updated_at }}<br><hr>
+    <a href="/note/{{$post->id}}/edit/">Редактировать статью</a>
 </div>
 
 @endsection

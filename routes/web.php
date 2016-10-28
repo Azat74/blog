@@ -24,24 +24,23 @@ Route::group(['middleware'=>'auth'], function(){
 //        return view('welcome');
 //    });
     Route::get('/note/create', 'PostController@create');
-
-
-
+    Route::post('/', 'PostController@store');
+    Route::get('/note/{id}/edit/', 'PostController@edit');
+    Route::put('/note/{id}', 'PostController@update');
+    Route::delete('/note/{id}', 'PostController@destroy');
 
     Route::get('/home', 'HomeController@index');
 });
-Route::post('/', 'PostController@store');
+
 Route::get('/', 'PostController@index');
 
 Auth::routes();
 
-Route::get('/test', function () {
-    $user = Auth::user();
-    echo $user;
-});
 
-Route::get('/note/{id}', 'PostController@note');
-Route::get('/note/{id}', 'PostController@note');
+
+
+Route::get('/note/{id}', 'PostController@note')->name('note');
+
 
 
 

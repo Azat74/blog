@@ -45,9 +45,37 @@ class PostController extends Controller
 //        DB::table('posts')->insert(       /*разные способы добавления записи в БД*/
 //            array($dataInput));
         return redirect('/');
+
+
+
+
     }
 
+    public function edit($id){
+        $post = Post::find($id);
 
+        return view('notes.edit',compact('post'));
+    }
 
+    public function update(Request $request, $id){
+        $this->validate($request,[
+            'title'=>'required|max:10',
+            'head' =>'required|min:10',
+            'body' =>'required|min:10'
+        ]);
 
+        $user = Auth::user();
+        $post = $user->posts()->find($id);
+
+        $post->update($request->all());
+        return redirect(route('note', $id));
+    }
+
+    public function destroy($id){
+        $user = Auth::user();
+        $post = $user->posts()->find($id);
+        //$notebook = Notebook::where('id', $id)->first();
+        $post->delete();
+        return redirect('/');
+    }
 }
