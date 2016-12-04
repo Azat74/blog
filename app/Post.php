@@ -27,7 +27,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Post extends Model
 {
-
+    
+    /*              Необходимо реализовать мягкое удаление, смотреть 21 ролик */
+    
+    
+//                              Список доступных для записи полей
+    
+    
     protected $fillable=['title','head','body','author'];
 
 

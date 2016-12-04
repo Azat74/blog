@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    {{dump(Session::all())}}
     <div class="container">
         <h1>Создать статью</h1>
         @if(count($errors)>0)
@@ -20,11 +20,11 @@
 
             <div class="form-group">
                 <label for="title">Название</label>
-                <input class="form-control" name="title" type="text">
+                <input class="form-control" name="title" value={{old('title')}}>
                 <label for="head">Превью статьи</label>
-                <input class="form-control" name="head" type="text">
+                <input class="form-control" name="head" value={{old('head')}}>
                 <label for="body">Текст статьи</label>
-                <input class="form-control" name="body" type="text">
+                <input class="form-control" name="body" value={{old('body')}}>
                 <input type="hidden" name="author" value="{{Auth::user()->name}}">
 
 

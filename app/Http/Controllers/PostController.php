@@ -41,7 +41,7 @@ class PostController extends Controller
         $user = Auth::user();
 
         $user->posts()->create($dataInput);
-//        Post::create($dataInput);         /*разные способы добавления записи в БД*/
+//       Post::create($dataInput);         /*разные способы добавления записи в БД*/
 //        DB::table('posts')->insert(       /*разные способы добавления записи в БД*/
 //            array($dataInput));
         return redirect('/');
@@ -64,18 +64,26 @@ class PostController extends Controller
             'body' =>'required|min:10'
         ]);
 
-        $user = Auth::user();
-        $post = $user->posts()->find($id);
-
+        //$user = Auth::user();
+        //$post = $user->posts()->find($id);
+        $post = Post::where('id', $id)->first();
         $post->update($request->all());
         return redirect(route('note', $id));
     }
+/*
 
+            здесь может удалять только тот автор, который и писал эту статью
+
+*/
     public function destroy($id){
-        $user = Auth::user();
-        $post = $user->posts()->find($id);
-        //$notebook = Notebook::where('id', $id)->first();
+        //$user = Auth::user();
+        //$post = $user->posts()->find($id);
+        $post = Post::where('id', $id)->first();
         $post->delete();
         return redirect('/');
     }
+//        Как делать ссылки на скачку:
+//    public function download(){
+//        return response()->download('robots.txt','mytext.txt');
+//    }
 }
